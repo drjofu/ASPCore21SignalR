@@ -1,0 +1,17 @@
+<h1>Benzinpreise</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Tankstelle</th>
+      <th>Diesel</th>
+      <th>Super</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let t of tankstellen">
+      <td>{{t.name}}</td>
+      <td>{{t.diesel  | number :'1.2-2'}}</td>
+      <td>{{t.super  | number :'1.2-2'}}</td>
+    </tr>
+  </tbody>
+</table>
