@@ -8,3 +8,4 @@ Solution öffnen und starten
 ## Angular 5: 
 npm install
 ng serve -o
+ 
