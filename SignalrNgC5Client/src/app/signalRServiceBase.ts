@@ -58,17 +58,17 @@ export enum ConnectionState {
 
   // Wrapper für Send-Methode
   public send(methodName: string, ...args: any[]) {
-    this.hubConnection.send(methodName, ...args);
+    return this.hubConnection.send(methodName, ...args);
   }
 
   // Verbindung einer Gruppe hinzufügen
   public joinGroup(groupname: string) {
-    this.hubConnection.send("joinGroup", groupname);
+    return this.hubConnection.send("joinGroup", groupname);
   }
 
   // Verbindung aus einer Gruppe entfernen
   public leaveGroup(groupname: string) {
-    this.hubConnection.send("leaveGroup", groupname);
+    return this.hubConnection.send("leaveGroup", groupname);
   }
 
 }

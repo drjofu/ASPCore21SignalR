@@ -7,24 +7,26 @@ using System.Threading.Tasks;
 
 namespace SignalRServerCore21Preview
 {
-  public class CityHub : Hub
+public class CityHub : Hub
+{
+  //private readonly IEnumerable<IHostedService> services;
+
+  //public CityHub(IEnumerable<IHostedService>services)
+  //{
+  //  this.services = services;
+  //}
+
+  // Client tritt einer Gruppe bei
+  public async Task JoinGroup(string groupname)
   {
-    private readonly IEnumerable<IHostedService> services;
-
-    public CityHub(IEnumerable<IHostedService>services)
-    {
-      this.services = services;
-    }
-
-    public async Task JoinGroup(string groupname)
-    {
-      await this.Groups.AddAsync(this.Context.ConnectionId, groupname);
-    }
-
-    public async Task LeaveGroup(string groupname)
-    {
-      await this.Groups.RemoveAsync(this.Context.ConnectionId, groupname);
-    }
-
+    await this.Groups.AddAsync(this.Context.ConnectionId, groupname);
   }
+
+  // Client verlässt eine Gruppe
+  public async Task LeaveGroup(string groupname)
+  {
+    await this.Groups.RemoveAsync(this.Context.ConnectionId, groupname);
+  }
+
+}
 }

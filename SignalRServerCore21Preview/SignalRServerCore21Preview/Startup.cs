@@ -27,13 +27,14 @@ namespace SignalRServerCore21Preview
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .AllowAnyOrigin();
-              //.WithOrigins("http://localhost:4200");
-            }));
+                //.WithOrigins("http://localhost:4200");
+       }));
 
 
       services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-      services.AddSignalR(options=> {
+      services.AddSignalR(options =>
+      {
         options.KeepAliveInterval = TimeSpan.FromSeconds(20);
       });
 
@@ -55,6 +56,7 @@ namespace SignalRServerCore21Preview
       }
 
       app.UseCors("CorsPolicy");
+      app.UseStaticFiles();
 
       app.UseSignalR(routes =>
       {

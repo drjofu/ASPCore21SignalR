@@ -12,7 +12,7 @@ import { Tankstelle } from '../models';
 export class BenzinpreiseComponent implements OnInit, OnDestroy {
 
   private signalRSubscription: Subscription;
-  private tankstellen: Tankstelle[];
+  public tankstellen: Tankstelle[];
 
   constructor(private signalRService: SignalrCityService) { }
 

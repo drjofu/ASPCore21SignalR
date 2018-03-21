@@ -9,18 +9,26 @@ import { Subscription } from 'rxjs';
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
+  // Liste der vergangenen Messages
   public messages = new Array<string>(0);
-  public messageToSend: string = "Hallo";
-  public name: string = "Osterhase";
-  private subscription:Subscription;
 
-  constructor(private signalRService: SignalrChatService) {
-    this.subscription =
-      signalRService.messages.subscribe(m =>
-      this.messages.unshift(m));
-  }
+  // Zu sendende Meldung
+  public messageToSend: string = "Hallo";
+
+  // Benutzername
+  public name: string = "Osterhase";
+
+  // Referenz der Subscription für späteres Unsubscribe
+  private subscription: Subscription;
+
+  constructor(private signalRService: SignalrChatService) { }
 
   ngOnInit() {
+    // Observable auf neue Meldungen überwachen
+    this.subscription =
+      this.signalRService.messages.subscribe(m =>
+        // Neue Meldung am Beginn der Liste einfügen
+        this.messages.unshift(m));
   }
 
   ngOnDestroy(): void {

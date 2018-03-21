@@ -18,9 +18,9 @@ namespace SignalRClientConsoleApp
          connection.InvokeAsync("SendToAll", "Console", t);
       }
 
-
     }
 
+    // Einrichten und Aufbauen der SignalR-Hub-Verbindung
     private static async Task<HubConnection> StartConnectionAsync()
     {
       string baseUrl = "https://localhost:5001/chat";
@@ -29,14 +29,20 @@ namespace SignalRClientConsoleApp
       Console.ReadLine();
 
       Console.WriteLine("Connecting to {0}", baseUrl);
+
+      // Verbindung einrichten
       var connection = new HubConnectionBuilder()
           .WithUrl(baseUrl)
           .WithConsoleLogger(LogLevel.Error)
           .Build();
 
+      // Verbindung starten
       await connection.StartAsync();
 
+      // Handler für Client-Methode
       connection.On<string>("ShowMessage", msg => Console.WriteLine("-> " + msg));
+
+      // Serverseitige Methode aufrufen
       await connection.InvokeAsync("SendToAll", "Console", "ja hallo erstmal");
       return connection;
 

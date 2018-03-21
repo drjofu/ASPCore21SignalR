@@ -15,6 +15,4 @@ export class SignalrChatService extends SignalRServiceBase {
     // clientseitige Methode showMessage mit Observable verknüpfen
     super.registerObserverSubject("showMessage", this.messages)
   }
-
-
 }

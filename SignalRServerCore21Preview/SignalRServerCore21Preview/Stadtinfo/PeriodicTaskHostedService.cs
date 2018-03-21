@@ -15,6 +15,8 @@ namespace SignalRServerCore21Preview.HomeSurveillance
 
     protected abstract void PeriodicTask(object state);
 
+    #region Implementierung IHostedService
+
     public virtual Task StartAsync(CancellationToken cancellationToken)
     {
       timer = new Timer(PeriodicTask, null, TimeSpan.Zero, interval);
@@ -28,5 +30,7 @@ namespace SignalRServerCore21Preview.HomeSurveillance
       timer?.Change(Timeout.Infinite, 0);
       return Task.CompletedTask;
     }
+
+    #endregion
   }
 }
