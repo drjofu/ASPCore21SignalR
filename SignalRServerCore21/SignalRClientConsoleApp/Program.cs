@@ -33,7 +33,7 @@ namespace SignalRClientConsoleApp
       // Verbindung einrichten
       var connection = new HubConnectionBuilder()
           .WithUrl(baseUrl)
-          .WithConsoleLogger(LogLevel.Error)
+          //.WithConsoleLogger(LogLevel.Error)
           .Build();
 
       // Verbindung starten

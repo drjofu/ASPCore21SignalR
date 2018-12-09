@@ -26,6 +26,8 @@ namespace SignalRServerCore21Preview
         builder
                 .AllowAnyMethod()
                 .AllowAnyHeader()
+                .AllowCredentials()
+                
                 .AllowAnyOrigin();
                 //.WithOrigins("http://localhost:4200");
        }));

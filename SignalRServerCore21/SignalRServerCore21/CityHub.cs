@@ -19,13 +19,13 @@ public class CityHub : Hub
   // Client tritt einer Gruppe bei
   public async Task JoinGroup(string groupname)
   {
-    await this.Groups.AddAsync(this.Context.ConnectionId, groupname);
+    await this.Groups.AddToGroupAsync(this.Context.ConnectionId, groupname);
   }
 
   // Client verlässt eine Gruppe
   public async Task LeaveGroup(string groupname)
   {
-    await this.Groups.RemoveAsync(this.Context.ConnectionId, groupname);
+    await this.Groups.RemoveFromGroupAsync(this.Context.ConnectionId, groupname);
   }
 
 }
